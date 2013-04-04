@@ -1,12 +1,5 @@
 package ma.moov.core;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import ma.moov.core.domaine.Adress;
-import ma.moov.core.domaine.User;
-import ma.moov.core.domaine.dao.UserRepository;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
@@ -23,7 +16,7 @@ public class App
         ApplicationContext ctx = new GenericXmlApplicationContext("META-INF/spring/mongo-context.xml",
         		"META-INF/spring/dao-context.xml");
         
-        UserRepository repo = (UserRepository)ctx.getBean("userRepository");
+       /* UserRepository repo = (UserRepository)ctx.getBean("userRepository");
         User u = new User();
         u.setLogin("my test toto");
         u.setPhone("0989456423");
@@ -40,7 +33,7 @@ public class App
         adresses.add(a);
         adresses.add(b);
         u.setAdresses(adresses);
-        repo.insertContact(u);
+        repo.insertContact(u);*/
         
     }
 }

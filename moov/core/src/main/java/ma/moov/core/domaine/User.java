@@ -1,20 +1,21 @@
 package ma.moov.core.domaine;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 @Document
-public class User {
+public abstract class User {
+	
 	private String login;
 	private String phone;
 	private String email;
 	@Id
 	private ObjectId id;
-	@DBRef
-	private List<Adress> adresses;
+	private Set<Adress> adresses;
 	
 	public String getLogin() {
 		return login;
@@ -40,10 +41,16 @@ public class User {
 	public void setId(ObjectId id) {
 		this.id = id;
 	}
-	public List<Adress> getAdresses() {
+	public Set<Adress> getAdresses() {
 		return adresses;
 	}
-	public void setAdresses(List<Adress> adresses) {
+	public void setAdresses(Set<Adress> adresses) {
 		this.adresses = adresses;
+	}
+	public void addAdress(Adress adress) {
+		if(adresses == null){
+			adresses = new HashSet<Adress>();
+		}
+		adresses.add(adress);
 	}
 }
